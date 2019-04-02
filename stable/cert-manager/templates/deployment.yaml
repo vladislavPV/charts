@@ -27,6 +27,7 @@ spec:
 {{ toYaml .Values.podAnnotations | indent 8 }}
       {{- end }}
     spec:
+      hostNetwork: {{ .Values.hostNetwork | default false }}
       serviceAccountName: {{ template "cert-manager.serviceAccountName" . }}
       containers:
         - name: {{ .Chart.Name }}
